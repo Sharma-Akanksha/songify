@@ -57,15 +57,25 @@
 	            </footer>
 	        </div>
     	</div>
-
+    	<script src="jquery-3.3.1.min.js"> </script> 
 		<script type="text/javascript">
 
-			var button = document.querySelector('.welcome-screen button');
+			$('.welcome-screen button').on('click', function() {
+			 	var name = $('#name-input').val();
+				//console.log(name);
+				if(name.length > 2) {
+					$('.welcome-screen').addClass('hidden');
+	  				$('.main').removeClass('hidden');
 
-			button.addEventListener('click', function() {
-  				var name = document.querySelector('#name-input').value;
-  				console.log(name)
+	  				var message = "Welcome " + name;
+	    			//console.log(message);
+
+	    			$('.user-name').text(message);
+	    		}else {
+					$('#name-input').addClass('error');
+				}
 			});
+
 
 		</script>
 	</body>	
