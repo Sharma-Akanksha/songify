@@ -71,6 +71,7 @@
 	    			//console.log(message);
 
 	    			$('.user-name').text(message);
+	    			setUpPlaylist() ;
 	    		}else {
 					$('#name-input').addClass('error');
 				}
@@ -140,6 +141,31 @@
 			    ret += "" + secs;
 			    return ret;
 			} 
+
+			var songList = ['Badri Ki Dulhania (Title Track)','Humma Song', 'Nashe Si Chadh Gayi', 'The Breakup Song'];
+			var fileNames = ['song1.mp3', 'song2.mp3', 'song3.mp3','song4.mp3'];
+
+			function setUpPlaylist() {
+		        var songDetailsHTML = '<span class="song-name"> </span><span class="song-artist"> </span> <span class="song-album"> </span><span class="song-length"> </span>' ;
+
+       			for(var i=0; i < songList.length ; i++) {
+      				$('.song-list').append('<div id="song' + i + '" class="song">'
+                              + songDetailsHTML +'</div>') ;
+      				$('#song'+ i +' .song-name').text(songList[i]);
+
+      				$('#song'+ i).attr('data-song-position', i) ;
+
+      				$('#song' + i).click(function() {
+            			// Selecting audio element and storing it in a variable
+            			var audio = document.querySelector('audio');
+            			// Getting the value when clicked
+     					var songPosition = $(this).attr('data-song-position');
+     					audio.src = fileNames[parseInt(songPosition)] ;
+  						toggleSong();
+          			});
+    			}
+		    }
+    
 		</script>
 	</body>	
 </html>
