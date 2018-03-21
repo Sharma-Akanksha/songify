@@ -22,7 +22,7 @@
 	                <div class="right floated user-name"> </div>
 	            </header>
 	            <section class="content">
-	                <audio src=""></audio>
+	                <audio src="song1.mp3"></audio>
 	                <div class="song-list">
 	                   <div class="list-headers">
 	                     <div> Title </div>
@@ -76,7 +76,35 @@
 				}
 			});
 
+			$('.play-icon').on('click',function() {
+  				var song = document.querySelector('audio');
+  				if(song.paused == true) {
+  					$('.play-icon').removeClass('fa-play').addClass('fa-pause');
+    				console.log('Playing');
+    				song.play();
+  				}
+  				else {
+  					$('.play-icon').removeClass('fa-pause').addClass('fa-play'); 
+    				console.log('Pausing');
+    				song.pause();
+  				}
+			});
 
+			$('body').on('keypress',function(event) {
+				if (event.keyCode == 32){
+			    	var song = document.querySelector('audio');
+	  				if(song.paused == true) {
+	  					$('.play-icon').removeClass('fa-play').addClass('fa-pause');
+	    				console.log('Playing');
+	    				song.play();
+	  				}
+	  				else {
+	  					$('.play-icon').removeClass('fa-pause').addClass('fa-play'); 
+	    				console.log('Pausing');
+	    				song.pause();
+	  				}
+				}
+			});  
 		</script>
 	</body>	
 </html>
