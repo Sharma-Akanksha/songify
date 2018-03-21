@@ -92,34 +92,39 @@ $('.welcome-screen button').on('click', function() {
 				    'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
 				    'album': 'Badrinath ki Dulhania',
 				    'duration': '2:56',
-				   'fileName': 'song1.mp3'
+				   'fileName': 'song1.mp3',
+				   'image' : 'song1.jpg'
 			  	},
 			  	{
 				    'name': 'Humma Song',
 				    'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
 				    'album': 'Ok Jaanu',
 				    'duration': '3:15',
-				    'fileName': 'song2.mp3'
+				    'fileName': 'song2.mp3',
+				    'image' : 'song2.jpg'
 			  	},
 			  	{
 					'name': 'Nashe Si Chadh Gayi',
 					'artist': 'Arijit Singh',
 					'album': 'Befikre',
 					'duration': '2:34',
-					'fileName': 'song3.mp3'
+					'fileName': 'song3.mp3',
+					'image' : 'song3.jpg'
 				},
 				{
 					'name': 'The Breakup Song',
 					'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
 					'album': 'Ae Dil Hai Mushkil',
 					'duration': '2:29',
-					'fileName': 'song4.mp3'
+					'fileName': 'song4.mp3',
+					'image' : 'song1.jpg'
 				}
 			  //
 			]
 
 			var currentSongPosition = null ;
-
+			changeCurrentSongDetails(0);
+			
 			function setUpPlaylist() {
 		        var songDetailsHTML = '<span class="song-name"> </span><span class="song-artist"> </span> <span class="song-album"> </span><span class="song-length"> </span>' ;
 
@@ -140,6 +145,7 @@ $('.welcome-screen button').on('click', function() {
             			if ($(this).attr('data-song-position') != currentSongPosition){
             				// Getting the value when clicked
      						var songPosition = $(this).attr('data-song-position');
+     						changeCurrentSongDetails(songPosition);
      						audio.src = songs[parseInt(songPosition)].fileName ;
 
      						currentSongPosition = songPosition ;
@@ -149,3 +155,10 @@ $('.welcome-screen button').on('click', function() {
           			});
     			}
 		    }
+
+		    function changeCurrentSongDetails(songPosition) {
+  				var songObj = songs[songPosition] ;
+		  		$('.current-song-image').attr('src','img/' + songObj.image) ;
+		  		$('.current-song-name').text(songObj.name) ;
+		  		$('.current-song-album').text(songObj.album) ;
+			}
