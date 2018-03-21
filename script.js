@@ -117,14 +117,14 @@ $('.welcome-screen button').on('click', function() {
 					'album': 'Ae Dil Hai Mushkil',
 					'duration': '2:29',
 					'fileName': 'song4.mp3',
-					'image' : 'song1.jpg'
+					'image' : 'song4.jpg'
 				}
 			  //
 			]
 
 			var currentSongPosition = null ;
 			changeCurrentSongDetails(0);
-			
+
 			function setUpPlaylist() {
 		        var songDetailsHTML = '<span class="song-name"> </span><span class="song-artist"> </span> <span class="song-album"> </span><span class="song-length"> </span>' ;
 
