@@ -17,20 +17,33 @@ function fetchSongs() {
 
 
 $('.welcome-screen button').on('click', function() {
-	var name = $('#name-input').val();
+	var name = $('#fname-input').val();
+	var last = $('#lname-input').val();
 	//console.log(name);
-	if(name.length > 2) {
+	if(name.length > 2 && last.length >4) {
 		$('.welcome-screen').addClass('hidden');
 		$('.main').removeClass('hidden');
 
-		var message = "Welcome " + name;
+		var message = "Welcome " + name + " " + last;
 		//console.log(message);
 
 		$('.user-name').text(message);
 		fetchSongs() ;
 	}else {
-		$('#name-input').addClass('error');
+		$('#fname-input').addClass('border border-danger');
+		$('#lname-input').addClass('border border-danger');
+		$('.f-error').html('First name should be more than 2');
+		$('.l-error').html('Last name should be more than 4');
 	}
+});
+
+
+$('.main .logout button').on('click', function() {
+	
+	
+	$('.welcome-screen').removeClass('hidden');
+	$('.main').addClass('hidden');
+
 });
 
 $('.play-icon').on('click',function() {
@@ -115,28 +128,29 @@ var currentSongPosition = null ;
 function setUpPlaylist() {
     var songDetailsHTML = '<span class="song-name"> </span><span class="song-artist"> </span> <span class="song-album"> </span><span class="song-length"> </span>' ;
 
+    $('.total').append(songs.length);
     for(var i=0; i < songs.length ; i++) {
-    var song = songs[i];
-    $('.song-list').append('<div id="song' + i + '" class="song">'+ songDetailsHTML +'</div>') ;
-    $('#song'+ i + ' .song-name').text(song.name);
-	$('#song'+ i + ' .song-artist').text(song.artist);
-	$('#song'+ i + ' .song-album').text(song.album);
-	$('#song'+ i + ' .song-length').text(song.duration);
-    $('#song'+ i).attr('data-song-position', i) ;
+	    var song = songs[i];
+	    $('.song-list').append('<div id="song' + i + '" class="song">'+ songDetailsHTML +'</div>') ;
+	    $('#song'+ i + ' .song-name').text(song.name);
+		$('#song'+ i + ' .song-artist').text(song.artist);
+		$('#song'+ i + ' .song-album').text(song.album);
+		$('#song'+ i + ' .song-length').text(song.duration);
+	    $('#song'+ i).attr('data-song-position', i) ;
 
-	$('#song' + i).click(function() {
-        // Selecting audio element and storing it in a variable
-        var audio = document.querySelector('audio');
-	        if ($(this).attr('data-song-position') != currentSongPosition){
-		        // Getting the value when clicked
-		     	var songPosition = $(this).attr('data-song-position');
-		     	changeCurrentSongDetails(songPosition);
-		     	audio.src = songs[parseInt(songPosition)].fileName ;
+		$('#song' + i).click(function() {
+	        // Selecting audio element and storing it in a variable
+	        var audio = document.querySelector('audio');
+		        if ($(this).attr('data-song-position') != currentSongPosition){
+			        // Getting the value when clicked
+			     	var songPosition = $(this).attr('data-song-position');
+			     	changeCurrentSongDetails(songPosition);
+			     	audio.src = songs[parseInt(songPosition)].fileName ;
 
-		     	currentSongPosition = songPosition ;
-		    }
-	  						
-	  		toggleSong();
+			     	currentSongPosition = songPosition ;
+			    }
+		  						
+		  	toggleSong();
 		});
  	}
 }

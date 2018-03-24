@@ -92,6 +92,10 @@ h1 {
     border: 2px solid red;
 }
 
+.error-message{
+    color: #ff0000;
+}
+
 .total-songs {
     margin-top: 2%;
 }
@@ -253,4 +257,9 @@ a {
 
 .current-song-album {
     margin-top: 0.4rem;
+}
+
+.btn-link, .btn-link:hover{
+    color: #ffffff;
+    text-decoration: none;
 }

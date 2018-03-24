@@ -12,19 +12,38 @@
 	        <section class="welcome-screen">
 	            <h1> Welcome to Songify </h1>
 	            <h3> Enter name to access your account </h3>
-	            <div class="input-wrapper">
-	                <input type="text" placeholder="Name" id="name-input" value="Akanksha Sharma">
-	                <button> Go </button>
+	            <div class="container mt-4">
+	            	<div class="row">
+	            		<div class="col-md-4 offset-md-4">
+	            			<form>
+					            <div class="form-group">
+								    <input type="test" class="form-control" id="fname-input" placeholder="First Name">
+								    <div class="error-message f-error"></div>
+								</div>
+								<div class="form-group">
+								    <input type="test" class="form-control" id="lname-input" placeholder="Last Name">
+								    <div class="error-message l-error"></div>
+								</div>
+								<button type="button" class="btn btn-primary">Go</button>
+				            </form>
+	            		</div>
+	            	</div>
+	            	
 	            </div>
 	        </section>
 	        <div class="main hidden">
 	            <!-- main page -->
 	            <header>
 	                <div class="right floated user-name"> </div>
+	                <div class="logout"><button type="button" class="btn btn-link">Logout</button></div>
 	            </header>
 	            <section class="content">
 	                <audio src="song1.mp3"></audio>
-	                <div class="song-list">
+	                <div class="right floated">
+	                 	<span>Total Songs :</span>
+	                 	<span class="total"></span>
+	                </div>
+	                <div class="song-list table">
 	                   <div class="list-headers">
 	                     <div> Title </div>
 	                     <div> Artist </div>
